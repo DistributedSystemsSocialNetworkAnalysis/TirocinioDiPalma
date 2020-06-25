@@ -9,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.Timer; 
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -163,7 +166,6 @@ public class TwitterSearch {
 		while(loadMoreTwitterContent(driver)) {
 			if(!stop.get()) break;
 			getTweet(driver, jsonArray);
-			Thread.sleep(2000);
 		}
 		
 		timer.cancel();
@@ -220,9 +222,18 @@ public class TwitterSearch {
 	
 	private static Boolean loadMoreTwitterContent(WebDriver driver) throws InterruptedException {
 		long lastHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+		final long lH = lastHeight;
 		
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		Thread.sleep(2000);
+		
+		try {
+			new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
+	
+		        public Boolean apply(WebDriver driver) {                
+		            return lH != (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
+		        }
+			});
+		}catch(Exception e) { }
 		
 		long newHeight = (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
         if (newHeight == lastHeight) return false;
