@@ -20,6 +20,8 @@ public class TwitterSearch {
 	private static AtomicBoolean stop = new AtomicBoolean(true);
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+		
+		//HashTable to identificate tweets
 		 
 		//Creating an instance of Chrome
 		ChromeOptions coptions = new ChromeOptions();
@@ -35,75 +37,79 @@ public class TwitterSearch {
 		FileWriter data = new FileWriter("/Users/francescodipalma/Desktop/JavaWorkspace/CrawlerTwitter/src/dataTweet.json");
 		
 		loadjQuery(driver);
-		twitterMining(driver, twitterUsername, password, true, data, "https://twitter.com/search?q=(%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid_19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23pandemia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid2019italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lockdown)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23quarantena)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23andràtuttobene)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23coronavirusitalia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23coronavirus)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid-19)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid19italia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23iorestoacasa)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23curaitalia)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase1)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase2)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
-		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase3)%20lang%3Ait%20since%3A2020-01-01%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, true, data, "https://twitter.com/search?q=(%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid_19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23pandemia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid2019italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covid)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lockdown)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23quarantena)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23litalianonsiferma)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23stayhome)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23covidiot)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23andràtuttobene)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23coronavirusitalia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23codogno%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piacenza%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23bergamo%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23cremona%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23brescia%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23lombardia%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23emiliaromagna%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23piemonte%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23nicolazingaretti%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23claudiopedrazzini%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23annaascani%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23principecarlo%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23coronavirus)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid-19)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23tomhanks%20AND%20%23covid19italia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23iorestoacasa)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23curaitalia)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase1)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase2)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
+		twitterMining(driver, twitterUsername, password, false, data, "https://twitter.com/search?q=(%23fase3)%20lang%3Ait%20-filter%3Areplies&src=typed_query");
 		
 		driver.close();
 		driver.quit();
@@ -157,7 +163,7 @@ public class TwitterSearch {
 		
 		Timer timer = new Timer(); 
 		TimerTask task = new Helper(); 
-		timer.schedule(task, 60 * 60000); //60 * 1 min
+		timer.schedule(task, 90 * 60000); //60 * 1 min
 		
 		getTweet(driver, jsonArray);
 		Thread.sleep(1000);
@@ -226,7 +232,7 @@ public class TwitterSearch {
 		try {
 			long lH = lastHeight;
 			
-			new WebDriverWait(driver, 10).until(new ExpectedCondition<Boolean>() {
+			new WebDriverWait(driver, 45).until(new ExpectedCondition<Boolean>() {
 	
 		        public Boolean apply(WebDriver driver) {                
 		            return lH != (long) ((JavascriptExecutor) driver).executeScript("return document.body.scrollHeight");
