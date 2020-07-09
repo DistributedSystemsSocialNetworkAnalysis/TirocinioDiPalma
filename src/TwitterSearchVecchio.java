@@ -15,7 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class TwitterSearch {
+public class TwitterSearchVecchio {
 	
 	private static AtomicBoolean stop = new AtomicBoolean(true);
 
